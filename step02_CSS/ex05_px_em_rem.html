@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*  body,
+      html {
+        height: 100%;
+      } */
+
+      div.outer {
+        background-color: skyblue;
+        /* width: 50%;
+        height: 50%; */
+        width: 50vw;
+        height: 50vh;
+        font-size: 32px;
+      }
+
+      .a {
+        background-color: red;
+        font-size: 1.5em;
+      }
+
+      .b {
+        background-color: blue;
+        font-size: 1.5rem;
+      }
+
+      .c {
+        background-color: green;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      단위: em vs rem vs px
+      <div class="a">em : 부모 노드를 기준으로 계산</div>
+      <div class="b">rem : 루트노드를 기준으로 계산</div>
+      <div class="c">px : 해상도를 기준으로 계산</div>
+    </div>
+  </body>
+</html>

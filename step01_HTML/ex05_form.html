@@ -15,11 +15,23 @@
     -->
     <form action="ex01_start.html" method="get">
       <label for="id">아이디</label>
-      <input type="text" name="id" size="5" maxlength="5" value="joo" id="id" />
+      <input
+        type="text"
+        name="id"
+        size="5"
+        maxlength="5"
+        value="joo"
+        id="id"
+        readonly
+      />
       <br />
       <label for="pwd">비밀번호</label>
       <input type="password" name="pwd" size="5" maxlength="5" id="pwd" />
       <br />
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name" value="hyosung" disabled />
+      <br />
+      <!-- http://127.0.0.1:5500/step01_HTML/ex01_start.html?id=joo&pwd=&hobby=%EB%93%B1%EC%82%B0&hobby=%EB%86%80%EA%B3%A0%EB%A8%B9%EA%B8%B0&gender=man -->
       <br />
       <br />
       <!-- 
@@ -29,11 +41,11 @@
       -->
       <fieldset>
         <legend>취미</legend>
-        <input type="checkbox" name="hobby" value="등산" />등산
+        <input type="checkbox" name="hobby" value="등산" checked />등산
         <input type="checkbox" name="hobby" value="낚시" />낚시
         <input type="checkbox" name="hobby" value="골프" />골프
         <input type="checkbox" name="hobby" value="수영" />수영
-        <input type="checkbox" name="hobby" value="놀고먹기" />놀고먹기
+        <input type="checkbox" name="hobby" value="놀고먹기" checked />놀고먹기
       </fieldset>
       <!-- 
       radio는 단일 선택만 가능
@@ -41,7 +53,7 @@
       -->
       <fieldset>
         <legend>성별</legend>
-        <input type="radio" name="gender" value="man" />남자
+        <input type="radio" name="gender" value="man" checked />남자
         <input type="radio" name="gender" value="woman" />여자
       </fieldset>
       <br />

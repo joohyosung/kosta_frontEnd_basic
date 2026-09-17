@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/basic.css" />
+    <style>
+      h2 {
+        color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+    현재 문서에 style 태그를 열어서 CSS 적용하기
+    -->
+    <h1 id="b">CSS 적용하기 1</h1>
+    <h1 id="a" class="a b">CSS 적용하기 2</h1>
+    <h2 class="a">CSS 적용하기 3</h2>
+
+    <hr />
+
+    <h2>Child Combinator (>)</h2>
+
+    <p>
+      The > combinator selects all elements that are direct children of a
+      specified element.
+    </p>
+    <p>
+      The following example selects all p elements that are direct children of
+      div:
+    </p>
+
+    <div>
+      <p>Paragraph 1 in the div.</p>
+      <p>Paragraph 2 in the div.</p>
+      <section>
+        <!-- not Child but Descendant -->
+        <p>Paragraph 3 in the div (inside a section element).</p>
+      </section>
+      <p>Paragraph 4 in the div.</p>
+    </div>
+
+    <p>Paragraph 5. Not in a div.</p>
+    <p>Paragraph 6. Not in a div.</p>
+    <p>Paragraph 7. Not in a div.</p>
+
+    <hr />
+
+    <form action="" method="get">
+      <label for="id">아이디</label>
+      <input type="text" name="id" id="id" /><br />
+      <label for="pwd">비밀번호</label>
+      <input type="password" name="pwd" id="pwd" /><br />
+      <button>로그인</button>
+    </form>
+
+    <hr />
+
+    <table>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

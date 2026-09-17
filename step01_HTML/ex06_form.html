@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>HTML5에 추가된 폼 요소 속성들</h2>
+    <form action="ex01_start.html" method="get" novalidate>
+      <input
+        type="date"
+        name="birthday"
+        min="2026-08-01"
+        max="2026-10-31"
+      /><br />
+      <input type="text" name="name" placeholder="이름 입력" required /><br />
+      <input type="email" name="email" placeholder="이메일 입력" /><br />
+      <input type="number" name="age" placeholder="나이 입력" /><br />
+
+      <input type="month" name="month" />
+      <input type="week" name="week" />
+      <input type="time" name="time" /><br /><br />
+
+      <!-- file이 있는 경우 method는 반드시 post 방식이어야 힘 -->
+      <input type="file" name="file" /><br /><br />
+
+      <!-- 화면에 나타나지 않지만 내부적으로 back쪽으로 전달해야하는 정보가 있을 때 사용 -->
+      <input type="hidden" name="message" value="Have a nice day" />
+      <input type="hidden" name="info" value="yes" />
+      <!-- 선택박스 -->
+      <select name="job" id="job" size="3" multiple>
+        <option value="0" selected>-선택-</option>
+        <optgroup label="개발팀">
+          <option value="개발자">개발자</option>
+          <option value="디자이너">디자이너</option>
+          <option value="기획자">기획자</option>
+          <option value="DBA">DBA</option>
+          <option value="PM">PM</option>
+          <option value="QA">QA</option>
+        </optgroup>
+      </select>
+      <br />
+      <br />
+      <input
+        list="browsers"
+        name="browser"
+        id="browser"
+        placeholder="브라우저 선택"
+      />
+      <datalist id="browsers">
+        <option value="Edge"></option>
+        <option value="Firefox"></option>
+        <option value="Chrome"></option>
+        <option value="Opera"></option>
+        <option value="Safari"></option>
+      </datalist>
+      <br /><br />
+      <textarea
+        name="content"
+        cols="30"
+        rows="10"
+        placeholder="내용입력"
+      ></textarea>
+      <br /><br />
+      <input type="submit" value="전송" /><br />
+      <input
+        type="image"
+        src="https://picsum.photos/id/10/200"
+        alt="랜덤이미지"
+      />
+    </form>
+  </body>
+</html>
