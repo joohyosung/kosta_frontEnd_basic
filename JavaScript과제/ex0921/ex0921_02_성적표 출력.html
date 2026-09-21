@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 2px solid red;
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 1px solid black;
+        width: 100px;
+        padding: 5px 10px;
+        text-align: left;
+      }
+
+      th {
+        border: 1px solid black;
+        text-align: center;
+        background-color: pink;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let name = prompt("이름 입력");
+      let kor = parseInt(prompt("국어 성적 입력"));
+      let eng = parseInt(prompt("영어 성적 입력"));
+      let math = parseInt(prompt("수학 성적 입력"));
+      let sum = kor + eng + math;
+      let mean = Math.round((sum / 3) * 100) / 100;
+      let grade;
+
+      if (mean >= 90) {
+        grade = "수";
+      } else if (mean >= 80) {
+        grade = "우";
+      } else if (mean >= 70) {
+        grade = "미";
+      } else if (mean >= 60) {
+        grade = "양";
+      } else {
+        grade = "가";
+      }
+
+      document.write("<table>");
+      document.write("<tr>");
+      document.write("<td>이름</td>");
+      document.write("<td>국어</td>");
+      document.write("<td>영어</td>");
+      document.write("<td>수학</td>");
+      document.write("<td>총점</td>");
+      document.write("<td>평균</td>");
+      document.write("<td>등급</td>");
+      document.write("</tr>");
+      document.write("<td>" + name + "</td>");
+      document.write("<td>" + kor + "</td>");
+      document.write("<td>" + eng + "</td>");
+      document.write("<td>" + math + "</td>");
+      document.write("<td>" + sum + "</td>");
+      document.write("<td>" + mean + "</td>");
+      document.write("<td>" + grade + "</td>");
+      document.write("</tr>");
+      document.write("</table>");
+    </script>
+  </body>
+</html>
