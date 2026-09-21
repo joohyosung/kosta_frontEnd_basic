@@ -1,0 +1,31 @@
+#navbar {
+  background-color: skyblue;
+}
+
+#navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#navbar ul li {
+  list-style-type: none;
+  font-size: x-large;
+}
+
+#navbar ul li a {
+  text-decoration: none;
+}
+
+#navbar ul li a:link {
+  color: black;
+}
+
+#navbar ul li a:visited {
+  color: black;
+}
+
+#navbar ul li img {
+  float: left;
+}

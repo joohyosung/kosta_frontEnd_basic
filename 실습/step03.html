@@ -71,11 +71,11 @@
    - 바깥 여백: 위 50px, 오른쪽 0, 아래 0, 왼쪽 100px
    - 왼쪽으로 배치 (float:left)
 */
-      #content .new {
+      #product {
         width: 900px;
         height: 200px;
         background-color: goldenrod;
-        padding: 50px 0 0 100px;
+        margin: 50px 0 0 100px;
         float: left;
       }
       /* 
@@ -86,12 +86,23 @@
    - 바깥 여백: 위 20px, 오른쪽 15px, 아래 20px, 왼쪽 15px
    - 왼쪽으로 배치 (float:left)
 */
+      #content #product .new {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        margin: 20px 15px 20px 15px;
+        float: left;
+      }
 
       /* 
    #product 영역 안의 두 번째 자식 div에 적용
    - 바깥 여백: 위 20px, 오른쪽 15px, 아래 0, 왼쪽 75px
    - 왼쪽으로 배치 (float:left)
 */
+      #product > div:nth-child(2) {
+        margin: 20px 15px 0 75px;
+        float: left;
+      }
     </style>
   </head>
   <body>
