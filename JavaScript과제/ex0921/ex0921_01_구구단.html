@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    table {
+      border: 2px solid red;
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      width: 100px;
+      padding: 5px 10px;
+      text-align: left;
+    }
+
+    th {
+      border: 1px solid black;
+      text-align: center;
+      background-color: pink;
+      color: white;
+    }
+  </style>
+  <body>
+    <script>
+      document.write("<table>");
+      for (let i = 1; i < 2; i++) {
+        document.write("<tr>");
+        for (let j = 2; j < 10; j++) {
+          document.write("<th>");
+          document.write(j + "단");
+          document.write("</th>");
+        }
+        document.write("</tr>");
+      }
+      for (let i = 1; i < 10; i++) {
+        document.write("<tr>");
+        for (let j = 2; j < 10; j++) {
+          document.write("<td>");
+          document.write(j + " * " + i + " = " + i * j);
+          document.write("</td>");
+        }
+        document.write("</tr>");
+      }
+      document.write("</table>");
+    </script>
+  </body>
+</html>

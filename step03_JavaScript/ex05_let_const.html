@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h4>변수에 대해 알아보자 (var - ES5 이전), (let vs const - ES6)</h4>
+    <script>
+      // 변수 선언 하는 방법
+      /*
+        let 변수이름;
+        let 변수이름 = 값;
+        변수이름 = 값; // let을 생략하면 (var의 특징이 된다.)
+
+        let or const는 동일한 이름 또는 선언 불가
+        선언 전에 사용 못 함(호이스팅은 되지만 일시적 사각지대가 만들어져 접근 불가)
+        */
+      let a;
+      let b = 20;
+      c = 3.14; // let 키워드 생략
+
+      //브라우저 출력
+      document.write("<h4>");
+      document.write("a = " + a + ", " + typeof a + "<br>");
+      document.write("b = " + b + ", " + typeof b + "<br>");
+      document.write("c = " + c + ", " + typeof c + "<hr>");
+
+      //값변경
+      a = "안녕하세요";
+      b = new Array(1, "hi", 20, 3.14, true);
+      c = false;
+
+      document.write("<h4>");
+      document.write("a = " + a + ", " + typeof a + "<br>");
+      document.write("b = " + b + ", " + typeof b + "<br>");
+      document.write("c = " + c + ", " + typeof c + "<hr>");
+
+      // 자바스크립트 호이스팅 개념 - 값을 제외한 변수를 맨 위에서 메모리에 먼저 올린다.
+      //                            함수는 선언한 내용 전체가 메모리에 먼저 올라간다.
+
+      // 1. let - 동일한 이름의 변수 또는 함수를 또 선언 불가
+      // var a = "졸지마세요";
+      // document.write("a = " + a + ", " + typeof a + "<br>");
+
+      // 2. let - 변수 또는 함수를 선언 전에 사용 불가
+
+      let age;
+      let addr = "seoul";
+
+      document.write("age = " + age + ", " + typeof age + "<br>");
+      document.write("addr = " + addr + ", " + typeof addr + "<hr>");
+
+      document.write("<h4>");
+    </script>
+    <h3>함수 만들어보자 - 호이스팅 test</h3>
+    <script>
+      // test(); // 선언 전 함수 호출 안됨
+
+      // 함수 선언 방법
+      // 1) 함수 선언식
+      // function 함수이름(){}
+      // 2) 함수 표현식 => 함수를 변수에 담아서 사용 -> 호이스팅 개념 떄문에
+      // let test = function(){}
+      // const test = function(){} -> const 사용을 권장
+
+      // 함수 표현식
+      let test = function () {
+        alert("1");
+      };
+
+      // function test() { // 동일한 이름 사용 안됨
+      //   alert("2");
+      // }
+
+      test(); // 함수 호출
+    </script>
+    <hr />
+    <h3>변수의 scope에 대해 알아보자</h3>
+    <script>
+      // 자바에서는 {} -> 블록 단위로 scope 결정
+      let i = 0; // 전역변수
+      function test2() {
+        let i = 5; // 지역변수
+        let j = 20; // 지역변수
+        k = 50; // var를 생략하면 무조건 전역변수가 된다.
+
+        console.log("i = " + i);
+        console.log("this.i = " + this.i);
+        console.log("j = " + j);
+        console.log("k = " + k);
+      }
+
+      test2();
+
+      function test3() {
+        console.log("test call");
+        console.log("i = " + i);
+        console.log("this.i = " + this.i);
+        // console.log("j = " + j);
+        console.log("k = " + k);
+
+        // console.log("전 : index " + index);
+        // 자바스크립트는 변수의 scope이 선언 위치의 함수 단위이다. 즉 {} 블록단위 아니다.
+        for (let index = 0; index <= 10; index++) {
+          //기능
+        }
+
+        // console.log("후 : index " + index);
+      }
+
+      test3();
+
+      // const는 상수이다. 선언과 동시에 반드시 초기값 필수, 값변경 불가
+      const info = "하이";
+      let info2;
+
+      // 값 변경 (불가)
+      // info = "안녕";
+
+      // 함수표현식
+      let stop = function () {};
+      const move = function () {};
+    </script>
+  </body>
+</html>
