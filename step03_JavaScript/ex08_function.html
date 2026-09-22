@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>함수 작성법</h3>
+    <script>
+      /*
+        1) 함수 선언식
+        2) 함수 표현식
+        3) arrow함수 (화살표)
+        */
+
+      const test01 = () => {
+        console.log("arrow함수 입니다.");
+      };
+
+      //   const test02 = (a, b) => {
+      //     console.log(`${a} + ${b} = ${a + b}`);
+      //     return a + b;
+      //   };
+
+      const test02 = (a, b) => a + b;
+
+      // 함수 호출
+      test01();
+      test02(10);
+      test02(10, 20);
+      test02(10, 20, 30);
+
+      // 리턴 값 받기
+      let re = test02(20, 30);
+      console.log(`결과 : ${re}`);
+    </script>
+  </body>
+</html>

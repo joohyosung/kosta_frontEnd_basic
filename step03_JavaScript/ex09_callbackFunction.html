@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>callback function</h3>
+    <script>
+      // 두 수의 값을 전달 받아 더하기 하는 함수
+      const add = (a, b) => a + b;
+      // 두 수의 값을 전달 받아 빼기 하는 함수
+      const minus = (a, b) => a - b;
+      // 연산 결과를 출력하는 함수
+      const print = (a, b, operator) => {
+        let re;
+        if (operator === "+") {
+          re = add(a, b);
+          console.log(`${a} ${operator} ${b} = ${re}`);
+        } else if (operator === "-") {
+          re = minus(a, b);
+          console.log(`${a} ${operator} ${b} = ${re}`);
+        } else {
+          console.log("연산 기호가 적절하지 않습니다.");
+        }
+      };
+
+      // callback 함수 적용하기
+      const print2 = (a, b, func) => {
+        // func는 콜백함수를 전달
+        let re = func(a, b);
+        // 출력
+        console.log(`${a}, ${b} = ${re}`);
+      };
+
+      // 함수 호출
+      print(20, 10, "+");
+      print2(20, 10, add);
+      print2(20, 10, minus);
+      print2(20, 10, (a, b) => a * b);
+      print2(20, 10, function (a, b) {
+        return a / b;
+      });
+    </script>
+  </body>
+</html>

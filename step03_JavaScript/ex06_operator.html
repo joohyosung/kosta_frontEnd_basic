@@ -8,13 +8,85 @@
   <body>
     <script>
       // 사용자 입력창 => 입력받은 모든 값은 string임
-      let name = prompt("이름은?", "이름");
-      console.log(name);
-      let kor = prompt("국어 점수?", 0);
-      let sum = parseInt(kor) + 10;
+      // let name = prompt("이름은?", "이름");
+      // console.log(name);
+      // let kor = prompt("국어 점수?", 0);
+      // let sum = parseInt(kor) + 10;
 
-      console.log(sum);
-      document.write(sum);
+      // console.log(sum);
+      // document.write(sum);
+    </script>
+    <script>
+      let i = 10;
+      let j = "10";
+      document.write("<h3>");
+      document.write("i = " + i + ", type = " + typeof i + "<br>");
+
+      // 템플릿 문자열 - 변수와 문자열 쉽게 연결해서 출력 (빽틱 - `)
+      document.write(`j = ${j}, typeof = ${typeof j} <hr>`);
+
+      // 비교 (같다 == vs ===, 같지 않다 != vs !==)
+      document.write(`${i} == ${j} => ${i == j}<br>`);
+      document.write(`${i} === ${j} => ${i === j}<br>`);
+
+      document.write(`${i} != ${j} => ${i != j}<br>`);
+      document.write(`${i} !== ${j} => ${i !== j}<br>`);
+
+      // 연산
+      document.write(`${i} * ${j} => ${i * j} <br>`);
+      // 덧셈은 데이터 타입이 다르면 연결을 하기 떄문에 실제 값을 더하기 위해선 형변화 필요
+      document.write(`${i} + ${j} => ${i + j} <br>`);
+      document.write(`${i} * ${j} => ${i * parseInt(j)} <br>`);
+      document.write("</h3>");
+
+      ///////////////////////////////////////////
+      // 형변환 함수
+      /*
+      1) pareInt() : 값 안에 문자가 나오기 전까지 숫자를 추출 기능
+      2) Number() : 값안에 문자가 포함되어 있으면 NaN 결과가 나옴 (Not a Number)
+      3) isNaN() : is Not a Number? (숫자가 아니면 true, 숫자이면 false)
+      4) parseFloat() : 값안에 문자가 나오기 전까지 실수형 추출 기능
+      */
+
+      let data1 = "100";
+      let data2 = "100a";
+      let data3 = "a100";
+
+      console.log(data1 + 10);
+      console.log(data1 * 10);
+
+      console.log(parseInt(data1) * 10);
+      console.log(Number(data1) * 10);
+
+      console.log("-------data2-------");
+      console.log(data2 + 10); // 연결
+      console.log(data2 * 10); // NaN
+      console.log("-------------------");
+      console.log(parseInt(data2));
+      console.log(Number(data2));
+      console.log("-------data3-------");
+      console.log(parseInt(data3)); // NaN
+      console.log(Number(data3)); // NaN
+
+      // isNaN 사용
+      if (isNaN(data3)) {
+        console.log("숫자아니다");
+      } else {
+        console.log("숫자이다");
+      }
+
+      // window 객체 안에 있는 주요 함수 (창역할)
+
+      // 1. 메시지 출력
+      alert("로그인되었습니다.");
+
+      // 2. 의사를 물어볼 때
+      let re = confirm("동의하십니까?");
+      console.log(`re = ${re}`);
+
+      // 3. 사용자 입력값 받을 때
+      let name = prompt("이름은?", "효성"); // 결과가 무조건 string이다.
+      console.log(`name = ${name}`);
     </script>
   </body>
 </html>

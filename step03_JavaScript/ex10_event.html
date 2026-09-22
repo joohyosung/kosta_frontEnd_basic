@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const test01 = (th) => {
+        console.log("클릭1 눌러졌어요~");
+        th.style.color = "red";
+      };
+
+      const test02 = () => {
+        console.log("클릭2 눌러졌어요~");
+        // 현재 이벤트를 발생시킨 주체 가져오기
+        const btn2 = event.target;
+        btn2.style.color = "blue";
+      };
+
+      const test03 = () => {
+        console.log("클릭3 눌러졌어요~");
+        event.target.style.color = "orange";
+      };
+
+      // 이벤트 연결(등록) - 자바스크립트 내에서 ...
+      onload = function () {
+        const btn2 = document.querySelector("#btn2");
+        console.log(btn2);
+
+        // 이벤트 등록
+        btn2.onclick = test02;
+
+        const btn3 = document.querySelector(".btn3");
+        btn3.addEventListener("click", test03);
+
+        // 모든 btn에 mouseover, mouseout 이벤트 적용
+        const btnList = document.querySelectorAll("button");
+        console.log(btnList);
+
+        /*
+        btnList[0].addEventListener("mouseover", () => {
+          console.log(111);
+        });
+        */
+        btnList.forEach((ele, index) => {
+          //   console.log(ele + " / " + index);
+          ele.addEventListener("mouseover", () => {
+            event.target.style.width = "100px";
+            event.target.style.height = "50px";
+            event.target.style.border = "3px red double";
+          });
+
+          ele.addEventListener("mouseout", () => {
+            event.target.style.width = "50px";
+            event.target.style.height = "25px";
+            event.target.style.border = "1px black solid";
+          });
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h3>이벤트 처리하기</h3>
+    <button onclick="test01(this)">클릭1</button>
+    <button id="btn2">클릭2</button>
+    <button class="btn3">클릭3</button>
+    <button>클릭4</button>
+  </body>
+</html>

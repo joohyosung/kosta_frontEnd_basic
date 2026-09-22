@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 150px;
+        border: 1px red solid;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="계산" id="cal" />
+    <div id="result"></div>
+    <script>
+      document.querySelector("#cal").addEventListener("click", () => {
+        let re;
+        let num1;
+        let num2;
+        let operator;
+
+        while (true) {
+          num1 = parseInt(prompt("1번 숫자를 입력하시오."));
+
+          if (isNaN(num1)) {
+            alert("숫자만 입력하시오.");
+            if (!confirm("다시 진행하시겠습니까?")) {
+              break;
+            } else {
+              continue;
+            }
+          }
+
+          num2 = parseInt(prompt("2번 숫자를 입력하시오."));
+
+          if (isNaN(num2)) {
+            alert("숫자만 입력하시오.");
+            if (!confirm("다시 진행하시겠습니까?")) {
+              break;
+            } else {
+              continue;
+            }
+          }
+
+          operator = prompt("다음의 연산기호를 입력하시오(+, -, /, *)");
+
+          switch (operator) {
+            case "+":
+              re = num1 + num2;
+              break;
+            case "-":
+              re = num1 - num2;
+              break;
+            case "*":
+              re = num1 * num2;
+              break;
+            case "/":
+              re = num1 / num2;
+              break;
+            default:
+              alert("올바른 연산기호를 입력하시오.");
+              if (!confirm("다시 진행하시겠습니까?")) {
+                return;
+              }
+          }
+
+          if (!isNaN(re)) {
+            break;
+          }
+        }
+
+        document.querySelector("#result").innerHTML =
+          "<h5>" + num1 + operator + num2 + "=" + re + "</h5>";
+      });
+    </script>
+  </body>
+</html>

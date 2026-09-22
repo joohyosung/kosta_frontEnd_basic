@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>New Web Project</title>
+    <style type="text/css">
+      tr th {
+        background-color: pink;
+      }
+      td,
+      th {
+        padding: 3px;
+      }
+      div {
+        border: 1px red solid;
+        width: 200px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>[ DOM 접근 ]</h1>
+    <form name="member" action="https://www.naver.com">
+      <table>
+        <tr>
+          <th>ID</th>
+          <td>
+            <input type="text" name="id" id="id" />
+          </td>
+        </tr>
+        <tr>
+          <th>결과</th>
+          <td><input type="text" size="30" name="output" id="output" /></td>
+        </tr>
+        <tr>
+          <th colspan="2">
+            <input type="submit" value="전송1" />
+            <input type="button" value="전송2" />
+          </th>
+        </tr>
+      </table>
+    </form>
+    <hr />
+    <div id="result"></div>
+    <script>
+      // 전송1(submit)을 클릭하면 유효성 체크한다.
+      document.querySelector("[name=member]").addEventListener("submit", () => {
+        // 전송 기능 막기
+        event.preventDefault();
+
+        // id 박스에 값이 있는지 체크
+        const idEle = document.querySelector("[name=id]");
+        console.log(idEle.value);
+
+        /*
+		값은 element에 넣을 때
+		1) form 요소에 넣기 - value
+		2) 폼요소를 제외한 테그 - innerHTML(마크업을 사용할 때), innerText(마크업 없이 문자열인 경우)
+		*/
+
+        // 조회한 value의 값을 결과 input 넣는다.
+        document.querySelector("[name=output]").value = idEle.value;
+
+        // div 영역에 id의 값을 넣기
+        document.querySelector("#result").innerHTML =
+          "<h5>" + idEle.value + "</h5>";
+        // document.querySelector("#result").innerText =
+        //   "<h5>" + idEle.value + "</h5>";
+
+        // input 값 지우기
+        idEle.value = "";
+
+        // id 박스에 커서 놓기
+        idEle.focus();
+      });
+
+      document.querySelector("[type=button]").addEventListener("click", () => {
+        // 유효성 체크한 후 모든 게 ok라면 전송을 한다.
+        const idEle = document.querySelector("#id");
+        const outputEle = document.getElementById("output");
+
+        if (idEle.value === "") {
+          alert("아이디를 입력하세요.");
+          idEle.focus();
+          return;
+        }
+        if (outputEle.value === "") {
+          alert("결과에 값을 입력하세요.");
+          outputEle.focus();
+          return;
+        }
+
+        // 폼 전송
+        document.querySelector("form").submit();
+      });
+    </script>
+  </body>
+</html>
