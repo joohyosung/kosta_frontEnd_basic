@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <body>
+ <form name="form">
+   ID : <input type="text" name="id"><span id="idSpan"></span><p>
+   age : <input type="text" name="age" ><span></span><p>
+   email : <input type="text" name="email" <span></span><p>
+
+   <fieldset>
+     <legend>주민번호 </legend>
+	 <input type="text" size="6" name="jumin1"  > - <input type="text" size="7" name="jumin2"  ><span></span> <p>
+     
+	 성별 : 
+	 <input type="radio" name="gender" value="남자" >남자
+     <input type="radio" name="gender" value="여자">여자
+
+   </fieldset>
+
+
+ </form>
+
+ <script>
+  // 허용 가능한 문자를 저장
+  let data="qwertyuiopasdfghjklzxcvbnm1234567890";
+  
+  // id 박스에 커서를 잃었을 때(blur) id의 값이 영문인지를 체크
+  document.querySelector("[name=id]").addEventListener("focus", () => {
+    event.target.style.border = "double 5px red";
+  })
+
+  document.querySelector("[name=id]").addEventListener("blur", () => {
+    event.target.style.border = "solid 1px gray";
+    let inputValue = event.target.value;
+    for(let i = 0; i < inputValue.length; i++){
+      let ch = inputValue.charAt(i);
+      if(data.indexOf(ch.toLocaleLowerCase()) == -1){
+        document.querySelector("#idSpan").innerHTML = "<strong style='color:red;'>영문만 입력하세요.</strong>";
+        return; // 함수 빠져나오기
+      } else {
+        document.querySelector("#idSpan").innerHTML = ""
+      };
+    }
+  })
+
+  // 나이에 숫자 유무 체크
+  document.querySelector("[name=age]").addEventListener("blur", () =>{
+    // age 박스에 있는 값을 조회해서 숫자인지를 체크
+    numChk(event.target);
+  })
+
+  const numChk = (obj) => {
+    if(isNaN(obj.value)){
+      // 숫자가 아니니깐 메시지 출력
+      obj.nextElementSibling.innerHTML="<strong style = 'color:red;'>숫자만 입력하세요.</strong>"
+      obj.value="";
+      obj.focus();
+      return;
+    } else {
+      obj.nextElementSibling.innerHTML="";
+      return false;
+    }
+  };
+
+  // 주민번호 앞자리 6자리가 되면 커서 이동
+  document.querySelector("[name=jumin1]").addEventListener("keyup", ()=>{
+    //주민번호 앞자리 숫자유무 체크
+    let etv = event.target.value;
+    if(isNaN(etv)){
+      event.target.value = etv.substring(0, etv.length-1);
+    };
+
+    if(etv.length === 6){
+      event.target.nextElementSibling.focus();
+    }
+  });
+  
+  // 주민번호 뒷자리 숫자유무 체크하고 숫자이면 성별 체크
+  document.querySelector("[name=jumin2]").addEventListener("blur", ()=>{
+    // 숫자 유무 체크
+    if(!numChk(event.target)){
+      let genderList = document.querySelectorAll("[name=gender]");
+      
+      if(event.target.value.charAt(0) === "1" || event.target.value.charAt(0) === "3"){
+        genderList[0].checked=true;
+      } else if(event.target.value.charAt(0) === "2" || event.target.value.charAt(0) === "4") {
+        genderList[1].checked=true;
+      } else{
+        event.target.nextElementSibling.innerHTML = "<strong style='color:red;'>형식에 맞지 않습니다.</strong>";
+      }
+    }
+  })
+ </script>
+  
+ </body>
+</html>
