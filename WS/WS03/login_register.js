@@ -1,43 +1,59 @@
-let name = document.querySelector("[name=name]");
-let id = document.querySelector("[name=id]");
-let email = document.querySelector("[name=email]");
-let phone = document.querySelector("[name=phone]");
-let password = document.querySelector("[name=password]");
-let password2 = document.querySelector("[name=password2]");
-let login = document.querySelector("#login");
-let regist = document.querySelector("#regist");
+const loginButton = document.querySelector("#login");
+const registerButton = document.querySelector("#regist");
 
-const email_id_chk = (obj) => {
-  if (!obj.value.indexOf("@")) {
-    alert("이메일 형식이 아닙니다.");
-    obj.value = "";
-    obj.focus();
-  }
-};
+if (loginButton !== null) {
+  loginButton.addEventListener("click", (event) => {
+    const id = document.querySelector("#id");
+    const password = document.querySelector("#password");
 
-const password_chk = (obj1, obj2) => {
-  if (obj1.value !== obj2.value) {
-    alert("비밀번호가 일치하지 않습니다.");
-    obj1.value = "";
-    obj2.value = "";
-    obj1.focus();
-  }
-};
+    if (id.value === "") {
+      event.preventDefault();
+      alert("아이디를 입력하세요.");
+      id.focus();
+      return;
+    }
 
-const input_chk = (obj) => {
-  if (obj.value == "") {
-    alert("필수 입력 사항입니다.");
-    obj.focus();
-    return false;
-  }
-};
+    if (password.value === "") {
+      event.preventDefault();
+      alert("비밀번호를 입력하세요.");
+      password.focus();
+      return;
+    }
 
-regist.addEventListener("click", () => {
-  let chk = true;
-  const inputs = [name, email, phone, password, password2];
-  for (let input of inputs) {
-    if (!input_chk(input)) return;
-  }
-  email_id_chk(email);
-  password_chk(password, password2);
-});
+    alert("입력유무체크 완료");
+  });
+}
+
+if (registerButton !== null) {
+  registerButton.addEventListener("click", () => {
+    const form = document.querySelector("form");
+    const inputs = document.querySelectorAll("form input");
+    const email = document.querySelector("#email");
+    const password = document.querySelector("#password");
+    const password2 = document.querySelector("#password2");
+
+    for (let input of inputs) {
+      if (input.value === "") {
+        alert(input.name + "을 입력하세요.");
+        input.focus();
+        return;
+      }
+    }
+
+    if (email.value.indexOf("@") === -1) {
+      alert("이메일 형식이 아닙니다.");
+      email.focus();
+      return;
+    }
+
+    if (password.value !== password2.value) {
+      alert("비밀번호가 일치하지 않습니다.");
+      password.value = "";
+      password2.value = "";
+      password.focus();
+      return;
+    }
+
+    form.submit();
+  });
+}
