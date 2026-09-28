@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Date, Math, Array 객체 알아보기</h2>
+    <script>
+      // 날짜 생성
+      const today = new Date();
+      console.log(today);
+
+      console.log(today.getFullYear);
+      console.log(today.getMonth); // 월은 0부터 시작
+      console.log(today.getDate); // 일
+
+      // 요일은 숫자로 나온다.
+      console.log(today.getDay); // 요일(0이 일요일, 1이 월요일)
+
+      console.log(today.toLocaleString);
+
+      // 난수 발생
+      let no = Math.random(); // 0.0 ~ 0.999999 사이
+      console.log(no);
+
+      // 1~5 사이 난수 발생
+      no = Math.floor(no * 5 + 1);
+      console.log(no);
+
+      // 배열
+      const arr1 = [];
+      const arr2 = new Array(1, true, "졸립다");
+      const arr3 = [2, 4, 6, 8, true];
+
+      const arr4 = [
+        [1, 2, 3, 4],
+        [3, 6, 9, 12, 15],
+        ["a", "b"],
+        [true, false, 3.14],
+      ];
+
+      const arr5 = [
+        { name: "hyosung", age: 32 },
+        { name: "jihyun", age: 32 },
+        { name: "harin", age: 1 },
+      ];
+
+      console.log("===arr1===");
+      console.log(arr1.length);
+      console.log(arr1);
+
+      console.log("===arr2===");
+      console.log(arr2.length);
+      console.log(arr2);
+
+      console.log("===arr3===");
+      console.log(arr3.length);
+      console.log(arr3);
+
+      console.log("===arr4===");
+      console.log(arr4.length);
+      console.log(arr4);
+
+      console.log("===arr5===");
+      console.log(arr5.length);
+      console.log(arr5);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <title>New Document</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      onload = function () {
+        document.querySelectorAll("span").forEach((spanEle, index) => {
+          spanEle.addEventListener("click", () => {
+            // let imgName = event.target.getAttribute("data-name");
+            let imgName = event.target.dataset.name;
+            console.log(imgName);
+
+            document.images[0].src = "img/" + imgName;
+          });
+        });
+
+        ////////////////////////////////////
+        // 첫 번째 이미지가 3초마다 다른 이미지로 변경
+        const arr = ["dog.gif", "lion.gif", "monkey.gif", "cat.gif"];
+
+        let index = 0;
+
+        const imgLoop = () => {
+          document.images[0].src = "img/" + arr[index++];
+          if (index === arr.length) index = 0;
+        };
+
+        let imgChange = setInterval(imgLoop, 3000);
+
+        // 첫 번째 이미지 마우스 over, out 이벤트 적용
+        document.images[0].addEventListener("mouseover", () => {
+          // setInterval 중지
+          clearInterval(imgChange);
+        });
+        document.images[0].addEventListener("mouseout", () => {
+          // setInterval 시작
+          imgChange = setInterval(imgLoop, 3000);
+        });
+
+        // 이미지 확대 축소
+        document.querySelectorAll(".imgOverOut").forEach((imgEle) => {
+          //   console.log(imgEle.width + "/" + imgEle.height);
+
+          //   // 대상.style.속성은 inline 스타일만 가져온다
+          //   console.log(imgEle.style.width + "/" + imgEle.style.height);
+
+          //   console.log(getComputedStyle(imgEle).height);
+          //   console.log(getComputedStyle(imgEle).width);
+          imgEle.addEventListener("mouseover", () => {
+            event.target.width *= 2;
+            event.target.height *= 2;
+          });
+          imgEle.addEventListener("mouseout", () => {
+            event.target.width /= 2;
+            event.target.height /= 2;
+          });
+        });
+      };
+    </script>
+  </head>
+
+  <body>
+    <img src="img/cat.gif" /><br /><br />
+
+    <span data-name="monkey.gif">[ 원숭이 ]</span> &nbsp;&nbsp;
+    <span data-name="lion.gif">[ 사자 ]</span> &nbsp;&nbsp;
+    <span data-name="cat.gif">[ 고양이 ]</span> &nbsp;&nbsp;
+    <span data-name="dog.gif">[ 강아지 ]</span> &nbsp;&nbsp;
+
+    <hr color="red" />
+
+    <img
+      src="img/monkey.gif"
+      width="70"
+      height="60"
+      class="imgOverOut"
+    />&nbsp;&nbsp;
+    <img
+      src="img/cat.gif"
+      width="70"
+      height="60"
+      class="imgOverOut"
+    />&nbsp;&nbsp;
+    <img
+      src="img/dog.gif"
+      width="70"
+      height="60"
+      class="imgOverOut"
+    />&nbsp;&nbsp;
+    <img
+      src="img/lion.gif"
+      width="70"
+      height="60"
+      class="imgOverOut"
+    />&nbsp;&nbsp;
+  </body>
+</html>

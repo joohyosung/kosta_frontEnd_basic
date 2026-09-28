@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>New Document</title>
+    <meta charset="utf-8" />
+
+    <style>
+      img {
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <input type="button" value="레이어움직이기" id="move" />
+      <input type="button" value="레이어멈추기" id="stop" />
+    </form>
+    <p>
+      <img src="img/dog.gif" id="img" />
+    </p>
+    <script>
+      const img = document.querySelector("#img");
+      const moveButton = document.querySelector("#move");
+      const stopButton = document.querySelector("#stop");
+
+      const arr = ["dog.gif", "lion.gif", "monkey.gif", "cat.gif"];
+
+      let index = 0;
+      let move = 0;
+      let direction = 1;
+      let moveInterval = null;
+
+      img.style.move = move + "px";
+
+      moveButton.addEventListener("click", () => {
+        if (moveInterval !== null) {
+          alert("이미 움직이고 있습니다.");
+          return;
+        }
+
+        moveInterval = setInterval(() => {
+          move += direction;
+          img.style.move = move + "px";
+
+          // 200px 사진 바꾸고 왼쪽으로 이동
+          if (move === 200) {
+            index++;
+            if (index === arr.length) index = 0;
+
+            img.src = "img/" + arr[index];
+            direction = -1;
+          }
+
+          // 0px 사진 바꾸고 오른쪽으로 이동
+          if (move === 0 && direction === -1) {
+            index++;
+            if (index === arr.length) index = 0;
+
+            img.src = "img/" + arr[index];
+            direction = 1;
+          }
+        }, 1);
+      });
+
+      stopButton.addEventListener("click", () => {
+        clearInterval(moveInterval);
+        moveInterval = null;
+      });
+    </script>
+  </body>
+</html>
