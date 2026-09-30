@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>spread 연산자</h2>
+    <script>
+      console.log("---배열---");
+      {
+        // 배열
+        const arr1 = [1, 2, 3];
+        const arr2 = [...arr1];
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr1 === arr2);
+
+        // arr1에 추가
+        arr1.push(4);
+        console.log(arr1);
+        console.log(arr2);
+      }
+      console.log("---객체 배열 복사---");
+      {
+        const arr1 = [
+          { name: "hyosung", age: 32 },
+          { name: "jihyun", age: 32 },
+        ];
+        const arr2 = [...arr1];
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr1 === arr2);
+
+        console.log("arr1의 0번지 이름을 변경");
+        arr1[0].name = "효성";
+
+        console.log(arr1);
+        console.log(arr2);
+      }
+      console.log("--객체 spread 사용--");
+      {
+        const obj1 = { name: "hyosung", age: 32 };
+        const obj2 = { ...obj1 };
+
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj1 === obj2);
+
+        obj1.name = "미미";
+        console.log(obj1);
+        console.log(obj2);
+      }
+      console.log("--객체 또는 배열 합치기--");
+      {
+        const arr1 = [1, 2, 3];
+        const arr2 = [10, 20, ...arr1, 30, 40];
+
+        console.log(arr1);
+        console.log(arr2);
+
+        const arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+
+        // 배열의 앞부분만 합치기
+        const arr4 = [0, 1, 2, ...arr3.slice(2, 6)];
+        console.log(arr4);
+
+        const obj1 = { name: "hyosung", age: 32 };
+        const obj2 = { addr: "sungnam" };
+
+        const obj3 = { ...obj1, ...obj2 };
+        console.log(obj3);
+      }
+      console.log("--함수 매개변수로 spread--");
+      {
+        const test01 = (arr) => {
+          arr.push(400);
+          console.log(arr);
+        };
+        let a = [100, 200, 300];
+        test01(a);
+        console.log("--함수 호출 후");
+        console.log(a);
+
+        console.log("--spread 이용");
+        const test02 = (arr) => {
+          arr.push(400);
+          console.log(arr);
+        };
+        let b = [100, 200, 300];
+        test02([...b]);
+        console.log("--함수 호출 후");
+        console.log(b);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>closure 개념</h2>
+    <script>
+      /*
+            closure는 내부 함수에서 외부함수의 변수를 기억했다가 외부에서 사용
+        */
+      let outer = (x) => {
+        console.log(x);
+
+        return (y) => {
+          return x + y;
+        };
+      };
+
+      console.log("--------------");
+      const re1 = outer(5);
+      const re2 = outer(10);
+      const re3 = outer(15);
+
+      console.log("--------------");
+      console.log(re1(5));
+      console.log(re2(5));
+      console.log(re3(5));
+    </script>
+  </body>
+</html>
