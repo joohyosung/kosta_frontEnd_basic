@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> New Document </title>
+  
+ </head>
+
+ <body>
+ <form name="f">
+	직업 : 
+	 <select name="job" >
+       <option value="0">--선택-- </option>
+	   <option value="백수">백수</option>
+	   <option value="백조">백조 </option>
+	   <option value="학생">학생 </option>
+	   <option value="날라리">날라리 </option>
+	   
+	 </select>	 
+ </form>
+ 
+ <p>
+ <div id="result"></div>
+  
+ <script>
+	document.querySelector("[name=job]").addEventListener("change", function(){
+		let sel = event.target;
+		let divEle = document.querySelector("#result");
+        let info="";
+
+		 // 선택된 value 조회
+		 info +=`직업은 ${sel.value}<br>`;
+
+		 //선택된 index 조회
+		 info +=`선택된 index =  ${sel.selectedIndex}<br>`;
+
+		 info +=`개수 =  ${sel.length }<br>`;
+		 divEle.innerHTML= info;
+
+		 // 새로운 option을 추가(ex)  <option value="날라리">날라리 </option> )
+		 let op = new Option("강사","instructor"); //생성
+         
+		 //select박스에 추가
+		 sel.options[sel.length]= op;
+
+
+		 //option를 삭제 
+		 sel.options[0] = null;
+
+
+	});
+ </script>
+
+
+
+ </body>
+ 
+ 
+ 
+</html>
